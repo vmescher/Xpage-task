@@ -1,0 +1,58 @@
+extends ./common/layout
+
+block title
+	title Новости
+
+block content 
+	main.page
+		._container
+			section.page__title.title
+				h1.title__text Все новости
+				ul.title__breadcrumbs
+					li 
+						a.title__breadcrumb(href="#") Главная
+						a.title__breadcrumb.title__breadcrumb_current(href="#") Новости
+			section.news-filter
+				form.news-filter__form(action="#" method="post")
+					.news-filter__body
+						.news-filter__column
+							.news-filter__calendar.calendar
+								button.calendar__button
+									img(src="img/icons/icons__calendar.svg", alt="calendar icon")
+									span.calendar__selected-day
+								.calendar__body
+									.calendar__title
+										a.calendar__arrow.calendar__arrow_prev(href="#")
+											img(src="img/icons/icons__arrow_prev.svg", alt="Предыдущий месяц")
+										h4.calendar__month
+										a.calendar__arrow.calendar__arrow_next(href="#")
+											img(src="img/icons/icons__arrow_next.svg", alt="Следующий месяц")
+									ul.calendar__week
+										li Пн
+										li Вт
+										li Ср
+										li Чт
+										li Пт
+										li Сб
+										li Вс
+									ul.calendar__days 	
+							input.news-filter__input#calendar__date(type="text", name="date")
+						.news-filter__column
+							.news-filter__category.category 
+								button.category__button Выбрать рубрику
+									span
+									span 
+								.category__body 
+									ul.category__list 
+										li.category__item.category__item_disabled(data-category='medicine') Медицина
+										li.category__item(data-category='society') Общество
+										li.category__item(data-category='service') Коммуналка
+										li.category__item(data-category='politic') Политика
+										li.category__item(data-category='sport') Спорт
+										li.category__item(data-category='progress') Вектор развития
+										li.category__item(data-category='kids') Дети
+										li.category__item(data-category='economy') Экономика
+										li.category__item(data-category='russia') Россия
+						input.news-filter__input#category__select(type="text", name="category")
+			block news 
+				include includes/news/news.pug

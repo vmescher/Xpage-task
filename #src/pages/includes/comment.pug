@@ -1,0 +1,19 @@
+section.comment
+	._container
+		.comment__container 
+			h3.comment__title Оставьте свой комментарий
+			form.comment__form.form(action="#" method="post" id="comment-form")
+				.form__body 
+					.form__group
+						input.form__input._placeholder(type="text" name="user-name" id="user-name" data-placeholder="Имя")
+					.form__group 
+						input.form__input._placeholder._email(type="text" name="user-email" id="user-email" data-placeholder="E-mail")
+					.form__group 
+						input.form__input.form__load(type="file" name="user-photo" id="user-photo")
+						label.form__label(for="user-photo") 
+							img(src="img/icons/icons__load.svg", alt="load")
+							span Прикрепить фото
+					.form__group.form__group_b
+						textarea.form__textarea.form__input._placeholder(name="user-message" id="user-message" rows="1" data-placeholder="Комментарий")
+				button.form__submit(type="submit") Отправить
+
