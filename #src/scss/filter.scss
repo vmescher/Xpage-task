@@ -1,0 +1,276 @@
+.news-filter {
+	&__form {
+	}
+
+	&__body {
+		display: flex;
+		@media (max-width: 467px) {
+			flex-direction: column;
+		}
+	}
+
+	&__column {
+		flex: 0 1 468px;
+		max-width: 468px;
+		margin-right: 50px;
+		&:last-of-type {
+			margin-right: 0;
+		}
+		@media (max-width: 467px) {
+			flex: auto;
+		}
+		@media (max-width: 467px) {
+			margin-right: 0;
+			margin-bottom: 30px;
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	&__calendar {
+		width: 100%;
+	}
+
+	&__category {
+		width: 100%;
+	}
+
+	&__input {
+		display: none;
+	}
+}
+
+// Календарь ===========================================================================================================================================
+
+.calendar {
+	width: 100%;
+	position: relative;
+	&__button {
+		width: 100%;
+		padding: 18px 24px 17px 24px;
+		background-color: #f2f2f2;
+		border: 2px solid #373334;
+		display: flex;
+		align-items: center;
+		position: relative;
+		&::before,
+		&::after {
+			content: "";
+			top: calc(50% - 1px);
+			right: 20px;
+			position: absolute;
+			width: 6px;
+			height: 2px;
+			background-color: #373334;
+		}
+		&::before {
+			transform: rotate(45deg);
+			right: 24px;
+		}
+		&::after {
+			transform: rotate(135deg);
+		}
+		img {
+			margin-right: 20px;
+		}
+	}
+
+	&__selected-day {
+		font-size: 16px;
+		line-height: 22 / 16 * 100%;
+	}
+
+	&__body {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		background-color: #ffffff;
+		border: 2px solid #373334;
+		box-sizing: border-box;
+		padding: 20px;
+		display: none;
+		z-index: 3;
+		&._active {
+			display: block;
+		}
+	}
+
+	&__title {
+		text-align: center;
+		font-weight: 700;
+		font-size: 14px;
+		line-height: 20px;
+		display: flex;
+		padding: 0px 7px;
+		margin-bottom: 18px;
+	}
+
+	&__month {
+		margin: 0 auto;
+	}
+
+	&__arrow {
+		padding-top: 5px;
+		&_prev {
+		}
+
+		&_next {
+		}
+	}
+
+	&__week {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		text-align: center;
+		font-weight: 500;
+		font-size: 12px;
+		line-height: 16px;
+		border-bottom: 2px solid #373334;
+		padding: 0px 0px 4px 0px;
+	}
+
+	&__days {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		grid-template-rows: repeat(6, 1fr);
+		row-gap: 18px;
+		padding: 9px 0px 0px 0px;
+	}
+
+	&__day {
+		font-size: 12px;
+		line-height: 16px;
+		text-align: center;
+		font-family: Barlow;
+		padding: 3px 0px 5px 0px;
+		width: 24px;
+		height: 24px;
+		cursor: pointer;
+		margin: 0 auto;
+		&:hover {
+			border: 1px solid #373334;
+			border-radius: 50%;
+			box-sizing: border-box;
+		}
+		&:active {
+			border: 1px solid #9f0023;
+			color: #9f0023;
+		}
+		&_prev {
+			font-family: Frank;
+			color: #959595;
+		}
+
+		&_selected {
+			color: #9f0023;
+		}
+
+		&_next {
+			font-family: Frank;
+			color: #959595;
+		}
+	}
+}
+
+// Категории ===========================================================================================================================================
+
+.category {
+	position: relative;
+	&__button {
+		display: block;
+		width: 100%;
+		border: 2px solid #373334;
+		padding: 18px 24px 17px 24px;
+		font-size: 16px;
+		line-height: 135%;
+		text-align: left;
+		position: relative;
+		span {
+			top: calc(50% - 1px);
+			right: 22px;
+			position: absolute;
+			width: 6px;
+			height: 2px;
+			background-color: #373334;
+			transition: all 0.1s ease 0.1s;
+			&:first-child {
+				transform: rotate(45deg);
+				right: 26px;
+			}
+			&:last-child {
+				transform: rotate(135deg);
+			}
+		}
+		&._active {
+			background-color: #ffffff;
+			span {
+				&:first-child {
+					transform: rotate(135deg);
+				}
+				&:last-child {
+					transform: rotate(45deg);
+				}
+			}
+		}
+	}
+
+	&__body {
+		display: none;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		max-height: 292px;
+		overflow-y: scroll;
+		border: 2px solid #373334;
+		border-top: 0;
+		background-color: #ffffff;
+		padding: 20px 24px;
+		scrollbar-color: #373334 #ffffff;
+		scrollbar-width: thin;
+		z-index: 3;
+		&::-webkit-scrollbar {
+			width: 9px;
+			background-color: #ffffff;
+		}
+		&::-webkit-scrollbar-thumb {
+			background: #373334;
+			border-bottom: 4px solid #ffffff;
+			border-top: 4px solid #ffffff;
+			border-right: 4px solid #ffffff;
+			width: 4px;
+		}
+		&._active {
+			display: block;
+		}
+	}
+
+	&__list {
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 22 / 16 * 100%;
+	}
+
+	&__item {
+		margin-bottom: 16px;
+		cursor: pointer;
+		&:last-child {
+			margin-bottom: 0;
+		}
+		&:hover {
+			color: #9f0023;
+		}
+
+		&_disabled {
+			color: #959595;
+			pointer-events: none;
+			cursor: default;
+		}
+
+		&_active {
+			color: #9f0023;
+		}
+	}
+}
